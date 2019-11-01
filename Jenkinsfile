@@ -8,13 +8,15 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''node --version
-npm install'''
+        sh '''cd demo1
+./gradlew test'''
       }
     }
     stage('Test') {
       steps {
-        sh '''npm run acceptance:tests
+        sh '''./gradlew build
+./gradlew build
+$JBOSS_HOME/bin/jboss-cli.sh -c --user=admin --password=Admin#70365 --command="deploy ./build/libs/demo1-0.0.1-SNAPSHOT.war --force"
 '''
       }
     }
