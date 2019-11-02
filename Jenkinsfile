@@ -21,7 +21,7 @@ pipeline {
     }
     stage('deploy') {
       steps {
-        sh '/opt/jboss/wildfly/bin/jboss-cli.sh -c --controller=thirsty_ellis:9990 --user=admin --password=Admin#70365 --command="deploy ./build/libs/demo1-0.0.1-SNAPSHOT.war --force"'
+        sh '/opt/jboss/wildfly/bin/jboss-cli.sh -c --controller=remote+http://172.18.0.3:9990 --user=admin --password=Admin#70365 --command="deploy ./build/libs/demo1-0.0.1-SNAPSHOT.war --force"'
       }
     }
   }
