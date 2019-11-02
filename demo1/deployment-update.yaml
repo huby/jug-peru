@@ -6,7 +6,7 @@ metadata:
   labels:
     app: nginx-deployment
 spec:
-  type: 10.152.183.13
+  type: ClusterIP
   selector:
     app: nginx-deployment
   ports:
