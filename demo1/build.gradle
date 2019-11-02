@@ -39,3 +39,4 @@ pmd {
 	ruleSetFiles = files("config/pmd/ruleset.xml")
 	reportsDir = file("build/reports/pmd")
 }
+

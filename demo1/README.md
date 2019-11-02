@@ -13,10 +13,6 @@
 
 docker network create devnet
 
-1. 
-
-
-
 ### Mysql 
 
 0. Levantar un contenedor con la imagen de mysql
@@ -25,33 +21,35 @@ docker run --name mysql-jboss -p 3306:3306  --restart always -e MYSQL_ROOT_PASSW
 
 ### Usando Docker images
 
-0. Construimos el war
+1. Construimos el war
 
 `./gradlew build`
 
-1. Creamos la imagen:
+2. Creamos la imagen:
 
 docker build --tag=wildfly-app .  
 
-2. Levantamos el container
+3. Levantamos el container
 
 docker run -p 8080:8080 -it wildfly-app 
 
 ### Usando cli
 
-0. Construimos el war
+1. Construimos el war
 
-./gradlew build  
+./gradlew build 
 
-1. Levantamos el container
+./gradlew bootJar 
+
+2. Levantamos el container
 
 docker run -p 8080:8080 -p 9990:9990 -it wildfly-admin /opt/jboss/wildfly/bin/standalone.sh -bmanagement 0.0.0.0 
 
-2. Descargamos y descomprimimos Wildfly
+3. Descargamos y descomprimimos Wildfly
 
 https://wildfly.org/downloads/
 
-3. Ejecutamos el archivo deplyment.sh
+4. Ejecutamos el archivo deplyment.sh
 
 ./deployment.sh
 
@@ -59,10 +57,8 @@ https://wildfly.org/downloads/
 
 1. Ejecutar la siguiente linea
 
-docker run -u root --rm -d -p 8081:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
 docker run -u root --rm -d -p 8081:8080 -p 50000:50000 -v blue:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
-
-docker run -u root --rm -d --network overlay -v blue:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean 
+ 
 2. Encontrar el password
 
 docker container ls
