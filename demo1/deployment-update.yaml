@@ -6,7 +6,7 @@ metadata:
   labels:
     app: nginx-deployment
 spec:
-  type: NodePort
+  type: 10.152.183.13
   selector:
     app: nginx-deployment
   ports:
@@ -22,12 +22,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: nginx-deployment
   replicas: 2
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx-deployment
     spec:
       containers:
       - name: nginx
