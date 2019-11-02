@@ -2,15 +2,26 @@
 
 ### Pre requisitos
 
+* Git
 * Java 8
 * Docker
 * Intellij Ultimate o Intellij CE
+
+### Create a docker network
+
+0. Create docker network
+
+docker network create devnet
+
+1. 
+
+
 
 ### Mysql 
 
 0. Levantar un contenedor con la imagen de mysql
 
-docker run --name mysql-jboss -p 3306:3306  --restart always -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7.21 
+docker run --name mysql-jboss -p 3306:3306  --restart always -e MYSQL_ROOT_PASSWORD=root -d --net devnet mysql:5.7.21 
 
 ### Usando Docker images
 
@@ -49,7 +60,9 @@ https://wildfly.org/downloads/
 1. Ejecutar la siguiente linea
 
 docker run -u root --rm -d -p 8081:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
+docker run -u root --rm -d -p 8081:8080 -p 50000:50000 -v blue:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
 
+docker run -u root --rm -d --network overlay -v blue:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean 
 2. Encontrar el password
 
 docker container ls

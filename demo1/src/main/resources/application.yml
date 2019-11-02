@@ -1,0 +1,31 @@
+spring:
+  profile: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jboss
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+name: demo1
+environment: dev
+
+---
+spring:
+  profiles: prod
+  datasource:
+    jndi-name: jboss/datasources/MySqlDS
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+name: demo1
+environment: prod
