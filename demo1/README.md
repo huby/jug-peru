@@ -9,13 +9,13 @@
 
 ### Create a docker network
 
-0. Create docker network
+1. Create docker network
 
 docker network create devnet
 
 ### Mysql 
 
-0. Levantar un contenedor con la imagen de mysql
+1. Levantar un contenedor con la imagen de mysql
 
 docker run --name mysql-jboss -p 3306:3306  --restart always -e MYSQL_ROOT_PASSWORD=root -d --net devnet mysql:5.7.21 
 
