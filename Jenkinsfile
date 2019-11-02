@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'jboss/wildfly'
+      args '--net devnet'
     }
 
   }
